@@ -1,0 +1,133 @@
+snippet rdadc "" b
+void readArray(int arr[], int *size, char name[]);
+endsnippet
+snippet rda "" b
+void readArray(int arr[], int *size, char name[])
+{
+	printf("%s size: ", name);
+	scanf("%d", size);
+	for (int i = 0; i < *size; i++)
+	{
+		printf("%s[%d]: ", name, i);
+		scanf("%d", &arr[i]);
+	}
+}
+endsnippet
+
+snippet prntadc "" b
+void printArray(int arr[], int size, char name[]);
+endsnippet
+snippet prnta "" b
+void printArray(int arr[], int size, char name[])
+{
+	printf("\n");
+	printf("%s = [\t", name);
+	for (int i = 0; i < size; i++)
+		printf("%d\t", arr[i]);
+	printf("]\n\n");
+}
+endsnippet
+
+
+snippet bsdc "Binary Search Declaration" b
+int binarySearch(int arr[], int l, int r, int target);
+endsnippet
+
+snippet bs "Binary Search Definition" b
+int binarySearch(int arr[], int l, int r, int target)
+{
+	if (l > r)
+		return -1;
+
+	int mid = (l + r) / 2;
+
+	if (arr[mid] == target)
+		return mid;
+
+	if (arr[mid] > target)
+		return binarySearch(arr, l, mid - 1, target);
+
+	return binarySearch(arr, mid + 1, r, target);
+}
+endsnippet
+
+snippet qsdc "Quick Sort Declaration" b
+void quickSort(int arr[], int l, int h);
+endsnippet
+
+snippet qs "Quick Sort Definition" b
+void quickSort(int arr[], int l, int h)
+{
+	if (l >= h)
+		return;
+
+	int p = arr[h];
+	int i = l - 1;
+
+	for (int j = l; j <= h - 1; j++)
+	{
+		if (arr[j] < p)
+		{
+			i++;
+			int temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+		}
+	}
+	int temp = arr[i + 1];
+	arr[i + 1] = arr[h];
+	arr[h] = temp;
+
+	int part = (i + 1);
+
+	quickSort(arr, l, part - 1);
+	quickSort(arr, part + 1, h);
+}
+endsnippet
+
+snippet msdc "" b
+void mergeSort(int arr[], int l, int r);
+endsnippet
+
+snippet ms "description" b
+void mergeSort(int arr[], int l, int r)
+{
+	if (l >= r)
+		return;
+
+	int m = l + (r - l) / 2;
+	int i, j, k;
+	int n1 = m - l + 1;
+	int n2 = r - m;
+
+	int L[n1], R[n2];
+
+	mergeSort(arr, l, m);
+	mergeSort(arr, m + 1, r);
+
+	for (i = 0; i < n1; i++)
+		L[i] = arr[l + i];
+	for (j = 0; j < n2; j++)
+		R[j] = arr[m + 1 + j];
+
+	for (i = j = 0, k = l; i < n1 && j < n2; k++)
+	{
+		if (L[i] <= R[j])
+		{
+			arr[k] = L[i];
+			i++;
+		}
+		else
+		{
+			arr[k] = R[j];
+			j++;
+		}
+	}
+
+	for (; i < n1; i++, k++)
+		arr[k] = L[i];
+
+	for (; j < n2; j++, k++)
+		arr[k] = R[j];
+}
+endsnippet
