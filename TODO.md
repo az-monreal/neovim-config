@@ -1,0 +1,14 @@
+- start page?
+- popoup command linnips)
+- fix lsp (handlers & stuff)
+- port c custom stuff
+- custom?/better colorscheme
+- finish mappings
+- better lualine & bufferline
+- fix treeseitter highlighting
+- version control config
+- debugging
+- custom functions
+- better nvimtree
+- which key?
+- ultisnips (event stuff)
