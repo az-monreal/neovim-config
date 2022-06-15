@@ -5,4 +5,4 @@ end
 
 require("azmon.lsp.handlers").setup()
 require("azmon.lsp.lsp-installer")
--- require("azmon.lsp.null-ls")
+require("azmon.lsp.null-ls")

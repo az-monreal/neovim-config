@@ -1,38 +1,3 @@
-local variables = {
-	nvim_tree_highlight_opened_files = 0,
-	nvim_tree_create_in_closed_folder = 1,
-	nvim_tree_respect_buf_cwd = 1,
-	nvim_tree_icons = {
-		default = "",
-		symlink = "",
-		git = {
-			unstaged = "",
-			staged = "S",
-			unmerged = "",
-			renamed = "➜",
-			deleted = "",
-			untracked = "U",
-			ignored = "◌",
-		},
-		folder = {
-			arrow_open = "",
-			arrow_closed = "",
-			default = "",
-			open = "",
-			empty = "",
-			empty_open = "",
-			symlink = "",
-			symlink_open = "",
-		},
-		lsp = {
-			hint = "",
-			info = "",
-			warning = "",
-			error = "",
-		},
-	},
-}
-
 -- default mappings
 local list = {
 	{ key = { "<CR>", "o", "<2-LeftMouse>" }, action = "edit" },
@@ -75,10 +40,6 @@ local list = {
 	{ key = ".", action = "run_file_command" },
 }
 
-for k, v in pairs(variables) do
-	vim.g[k] = v
-end
-
 local status_ok, nvimtree = pcall(require, "nvim-tree")
 if not status_ok then
 	return
@@ -90,6 +51,8 @@ end
 nvimtree.setup({ -- BEGIN_DEFAULT_OPTS
 	auto_reload_on_write = true,
 	disable_netrw = true,
+	create_in_closed_folder = true,
+	respect_buf_cwd = true,
 	-- hide_root_folder = false,
 	hijack_cursor = true,
 	hijack_netrw = true,
@@ -114,6 +77,7 @@ nvimtree.setup({ -- BEGIN_DEFAULT_OPTS
 		},
 	},
 	renderer = {
+		highlight_opened_files = "none",
 		indent_markers = {
 			enable = true,
 			icons = {
@@ -125,6 +89,35 @@ nvimtree.setup({ -- BEGIN_DEFAULT_OPTS
 		icons = {
 			webdev_colors = true,
 		},
+		-- glyphs = {
+		-- 	default = "",
+		-- 	symlink = "",
+		-- 	git = {
+		-- 		unstaged = "",
+		-- 		staged = "S",
+		-- 		unmerged = "",
+		-- 		renamed = "➜",
+		-- 		deleted = "",
+		-- 		untracked = "U",
+		-- 		ignored = "◌",
+		-- 	},
+		-- 	folder = {
+		-- 		arrow_open = "",
+		-- 		arrow_closed = "",
+		-- 		default = "",
+		-- 		open = "",
+		-- 		empty = "",
+		-- 		empty_open = "",
+		-- 		symlink = "",
+		-- 		symlink_open = "",
+		-- 	},
+		-- 	lsp = {
+		-- 		hint = "",
+		-- 		info = "",
+		-- 		warning = "",
+		-- 		error = "",
+		-- 	},
+		-- },
 	},
 	hijack_directories = {
 		enable = true,

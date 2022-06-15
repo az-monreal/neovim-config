@@ -45,19 +45,19 @@ M.setup = function()
 end
 
 local function lsp_highlight_document(client)
-	-- Set autocommands conditional on server_capabilities
-	if client.resolved_capabilities.document_highlight then
-		vim.api.nvim_exec(
-			[[
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]],
-			-- autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-			false
-		)
-	end
+	-- 	-- Set autocommands conditional on server_capabilities
+	-- 	if client.resolved_capabilities.document_highlight then
+	-- 		vim.api.nvim_exec(
+	-- 			[[
+	--       augroup lsp_document_highlight
+	--         autocmd! * <buffer>
+	--         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+	--       augroup END
+	--     ]],
+	-- 			-- autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+	-- 			false
+	-- 		)
+	-- 	end
 end
 
 local function lsp_keymaps(bufnr)
@@ -86,9 +86,9 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-	if client.name == "sumneko_lua" then
-		client.resolved_capabilities.document_formatting = false
-	end
+	-- if client.name == "sumneko_lua" then
+	-- 	client.server_capabilities.documentFormattingProvider = false
+	-- end
 	--[[ if client.name == "clangd" then
 		client.resolved_capabilities.document_formatting = false
 	end ]]

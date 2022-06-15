@@ -19,6 +19,7 @@ local plugins = {
 	"comment",
 	"gitsigns",
 	"treesitter",
+	"treesitter-context",
 	"colorizer",
 	"ultisnips",
 	"todo",

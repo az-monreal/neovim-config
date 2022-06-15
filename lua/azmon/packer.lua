@@ -77,7 +77,8 @@ return require("packer").startup(function(use)
 	use({ "numToStr/Comment.nvim" })
 
 	use({ "nvim-treesitter/nvim-treesitter" })
-	use({ "nvim-treesitter/playground" })
+	use({ "nvim-treesitter/playground", requires = { { "nvim-treesitter/nvim-treesitter" } } })
+	use({ "nvim-treesitter/nvim-treesitter-context", requires = { { "nvim-treesitter/nvim-treesitter" } } })
 
 	use("neovim/nvim-lspconfig") -- enable LSP
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
@@ -131,7 +132,6 @@ return require("packer").startup(function(use)
 	use({ "SmiteshP/nvim-gps", requites = "nvim-treesitter/nvim-treesitter" })
 	use({ "ur4ltz/surround.nvim" })
 	use({ "xiyaowong/nvim-transparent" })
-
 	-- Colorshcemes
 
 	use({ "Mofiqul/vscode.nvim" })
@@ -145,6 +145,8 @@ return require("packer").startup(function(use)
 	use({ "ThePrimeagen/harpoon" })
 
 	use({ "rktjmp/lush.nvim" })
+
+	use({ "nickeb96/fish.vim" })
 
 	-- watson https://github.com/ccchapman/watson.nvim
 end)
